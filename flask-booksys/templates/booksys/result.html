@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+
+{% block header %}
+  <h1>{% block title %}查找结果{% endblock %}</h1>
+{% endblock %}
+
+{% block content %}
+  <form>
+    <textarea name="res">{{ res }}</textarea>
+  </form>
+{% endblock %}

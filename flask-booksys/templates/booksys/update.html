@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block header %}
+  <h1>{% block title %}更新 "{{ book['mingwen'] }}"{% endblock %}</h1>
+{% endblock %}
+
+{% block content %}
+  <form method="post">
+    <label for="mingwen">图书信息</label>
+    <textarea name="mingwen" id="mingwen">{{ request.form['mingwen'] or book['mingwen'] }}</textarea>
+    
+    <br>
+    <label for="enctype">加密类型</label>
+    <select name="enctype" id="enctype" style="width: 135px">
+      <option value="AES">AES</option>
+      <option value="RSA">RSA</option>
+      <option value="无">无</option>
+    </select>
+    <br>
+
+    <input type="submit" value="保存">
+  </form>
+  <hr>
+  <form action="{{ url_for('booksys.delete', id=book['id']) }}" method="post">
+    <input class="danger" type="submit" value="删除" onclick="return confirm('确定删除图书信息?');">
+  </form>
+{% endblock %}

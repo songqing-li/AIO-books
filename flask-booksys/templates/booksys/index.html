@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+
+{% block header %}
+  <h1>{% block title %}图书出版信息{% endblock %}</h1>
+  {% if g.user %}
+    <a class="action" href="{{ url_for('booksys.create') }}">新建</a>
+  {% endif %}
+  <br>
+  <a class="action" href="{{ url_for('booksys.search') }}">搜索</a>
+{% endblock %}
+
+{% block content %}
+  {% for book in books %}
+    <article class="book">
+      <header>
+        <div>
+          <strong><p>图书出版信息[id={{ book['id'] }}]>>></p></strong>
+          <h1>{{ book['mingwen'] }}</h1>
+          <div class="about">作者：{{ book['username'] }}，时间：{{ book['created'].strftime('%Y-%m-%d') }}</div>
+        </div>
+        {% if g.user['id'] == book['author_id'] %}
+          <a class="action" href="{{ url_for('booksys.update', id=book['id']) }}">更新</a>
+        
+      </header>
+      <form>
+        <label for="enctype">加密类型>>>{{ book['enctype'] }}</label>
+        <label for="str_miwen">加密信息>>></label>
+        <textarea class="str_miwen">{{ book['str_miwen'] }}</textarea>
+      </form>
+
+      <!--qrcode img-->
+      <a class="action" href="static/image/{{ book['id'] }}.png">点击查看QR二维码(大图)</a>
+      <br>
+      <img src="static/image/{{ book['id'] }}.png" alt='QR二维码' width="180px" height="180px">
+      {% endif %}
+    </article>
+    {% if not loop.last %}
+      <p></p>
+      <hr>
+    {% endif %}
+  {% endfor %}
+{% endblock %}

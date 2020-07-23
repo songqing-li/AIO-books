@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block header %}
+  <h1>{% block title %}新建{% endblock %}</h1>
+{% endblock %}
+
+{% block content %}
+  <form method="post">
+    <label for="mingwen">图书出版信息</label>
+    <textarea name="mingwen" id="mingwen" value="{{ request.form['mingwen'] }}" required></textarea>
+    <br>
+    <label for="enctype">加密类型</label>
+    <select name="enctype" id="enctype" style="width: 135px">
+    	<option value="AES">AES</option>
+    	<option value="RSA">RSA</option>
+      <option value="无">无</option>
+    </select>
+    <br>
+    <input type="submit" value="保存">
+  </form>
+{% endblock %}

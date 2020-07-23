@@ -1,0 +1,10 @@
+Flask==1.1.1
+
+cryptography==2.3.1
+bs4==0.0.1
+
+rsa==4.0
+
+qrcode==6.1
+Pillow==6.1.0
+pyzbar==0.1.8

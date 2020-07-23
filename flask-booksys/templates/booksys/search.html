@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block header %}
+  <h1>{% block title %}图书出版信息查找{% endblock %}</h1>
+{% endblock %}
+
+{% block content %}
+  <form method="post">
+    <label for="str_miwen">二维码加密信息</label>
+    <textarea name="str_miwen" id="str_miwen" value="{{ request.form['str_miwen'] }}" required></textarea>
+    <input type="submit" value="提交">
+  </form>
+  <hr>
+{% endblock %}
